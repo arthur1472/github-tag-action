@@ -6,9 +6,9 @@ set -eo pipefail
 #cat ~/.ssh/config
 #ls -al /github/home/
 #ls -al /github/workspace/
-echo "$HOME"
-echo "$GIT_SSH_COMMAND"
-exit
+#echo "$HOME"
+#echo "$GIT_SSH_COMMAND"
+#exit
 
 # config
 default_semvar_bump=${DEFAULT_BUMP:-minor}
@@ -102,6 +102,8 @@ echo "added SSH key"
 
 #ssh -v github.com
 
+ssh -T git@github.com
+
 current_branch=$(git rev-parse --abbrev-ref HEAD)
 
 pre_release="$prerelease"
@@ -119,8 +121,6 @@ for b in "${branch[@]}"; do
     fi
 done
 echo "pre_release = $pre_release"
-
-ssh-add -L
 
 # fetch tags
 git fetch --tags
