@@ -2,7 +2,7 @@
 
 set -eo pipefail
 
-#cat /etc/ssh/ssh_config
+cat /etc/ssh/ssh_config
 #cat ~/.ssh/config
 #ls -al /github/home/
 #ls -al /github/workspace/
