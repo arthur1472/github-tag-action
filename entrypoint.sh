@@ -58,7 +58,7 @@ setOutput() {
 
 echo "Adding SSH key and running SSH agent"
 cat > ~/.ssh/id_ed25519 << EOF
-$GITHUB_TOKEN
+$SSH_KEY
 EOF
 
 ssh-add ~/.ssh/id_ed25519
