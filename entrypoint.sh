@@ -118,6 +118,8 @@ for b in "${branch[@]}"; do
 done
 echo "pre_release = $pre_release"
 
+ssh-add -L
+
 # fetch tags
 git fetch --tags
 
