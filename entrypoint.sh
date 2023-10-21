@@ -75,7 +75,7 @@ echo "github.com ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCj7ndNxQowgcQnjshcLrqPEii
 eval `ssh-agent -s`
 ssh-add ~/.ssh/id_ed25519
 #ssh-keyscan github.com >> ~/.ssh/known_hosts
-ssh -T git@github.com
+#ssh -T git@github.com
 
 current_branch=$(git rev-parse --abbrev-ref HEAD)
 
