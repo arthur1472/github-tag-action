@@ -6,7 +6,9 @@ set -eo pipefail
 #cat ~/.ssh/config
 #ls -al /github/home/
 #ls -al /github/workspace/
-#exit
+echo "$HOME"
+echo "$GIT_SSH_COMMAND"
+exit
 
 # config
 default_semvar_bump=${DEFAULT_BUMP:-minor}
