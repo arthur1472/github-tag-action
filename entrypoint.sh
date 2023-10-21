@@ -57,6 +57,7 @@ setOutput() {
 }
 
 echo "Adding SSH key and running SSH agent"
+echo $SSH_KEY
 cat > ~/.ssh/id_ed25519 << EOF
 $SSH_KEY
 EOF
