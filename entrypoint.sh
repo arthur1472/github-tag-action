@@ -2,7 +2,7 @@
 
 set -eo pipefail
 
-ls -al ~/.ssh/config/
+cat ~/.ssh/config
 ls -al /github/home/
 ls -al /github/workspace/
 exit
@@ -66,9 +66,17 @@ echo "Adding SSH key and running SSH agent"
 mkdir ~/.ssh
 touch ~/.ssh/id_ed25519
 chmod 400 ~/.ssh/id_ed25519
+touch ~/.ssh/config
+chmod 600 ~/.ssh/config
 
 cat > ~/.ssh/id_ed25519 << EOF
 $SSH_KEY
+EOF
+
+cat > ~/.ssh/config << EOF
+Host github.com
+    IdentityFile ~/.ssh/id_ed25519
+    IdentitiesOnly yes
 EOF
 
 ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
