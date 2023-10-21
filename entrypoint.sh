@@ -60,6 +60,7 @@ echo "Adding SSH key and running SSH agent"
 
 mkdir ~/.ssh
 touch ~/.ssh/id_ed25519
+chmod 400 ~/.ssh/id_ed25519
 
 cat > ~/.ssh/id_ed25519 << EOF
 $SSH_KEY
