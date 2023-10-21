@@ -57,12 +57,11 @@ setOutput() {
 }
 
 echo "Adding SSH key and running SSH agent"
-echo $SSH_KEY
-cat > ~/.ssh/id_ed25519 << EOF
+cat > /github/home/.ssh/id_ed25519 << EOF
 $SSH_KEY
 EOF
 
-ssh-add ~/.ssh/id_ed25519
+ssh-add /github/home/.ssh/id_ed25519
 
 current_branch=$(git rev-parse --abbrev-ref HEAD)
 
