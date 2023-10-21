@@ -66,6 +66,9 @@ cat > ~/.ssh/id_ed25519 << EOF
 $SSH_KEY
 EOF
 
+ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+ssh-keyscan -t ed25519 github.com >> ~/.ssh/known_hosts
+
 # date added at 2023-10-21, keys found at https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints
 echo "github.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl" >> ~/.ssh/known_hosts
 echo "github.com ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBEmKSENjQEezOmxkZMy7opKgwFB9nkt5YRrYMjNuG5N87uRgg6CLrbo5wAdT/y6v0mKV0U2w0WZ2YB/++Tpockg=" >> ~/.ssh/known_hosts
