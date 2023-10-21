@@ -2,10 +2,10 @@
 
 set -eo pipefail
 
-cat ~/.ssh/config
-ls -al /github/home/
-ls -al /github/workspace/
-exit
+#cat ~/.ssh/config
+#ls -al /github/home/
+#ls -al /github/workspace/
+#exit
 
 # config
 default_semvar_bump=${DEFAULT_BUMP:-minor}
