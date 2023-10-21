@@ -2,7 +2,7 @@
 
 set -eo pipefail
 
-cat /etc/ssh/ssh_config
+#cat /etc/ssh/ssh_config
 #cat ~/.ssh/config
 #ls -al /github/home/
 #ls -al /github/workspace/
@@ -78,6 +78,7 @@ cat > ~/.ssh/config << EOF
 Host github.com
     IdentityFile ~/.ssh/id_ed25519
     IdentitiesOnly yes
+    ForwardAgent yes
 EOF
 
 ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
@@ -91,6 +92,10 @@ echo "github.com ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCj7ndNxQowgcQnjshcLrqPEii
 eval `ssh-agent -s`
 ssh-add ~/.ssh/id_ed25519
 #ssh-keyscan github.com >> ~/.ssh/known_hosts
+
+echo "$SSH_AUTH_SOCK"
+
+ssh -v URL
 
 current_branch=$(git rev-parse --abbrev-ref HEAD)
 
