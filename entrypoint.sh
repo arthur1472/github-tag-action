@@ -56,6 +56,13 @@ setOutput() {
     echo "${1}=${2}" >> "${GITHUB_OUTPUT}"
 }
 
+echo "Adding SSH key and running SSH agent"
+cat > ~/.ssh/id_ed25519 << EOF
+$GITHUB_TOKEN
+EOF
+
+ssh-add ~/.ssh/id_ed25519
+
 current_branch=$(git rev-parse --abbrev-ref HEAD)
 
 pre_release="$prerelease"
