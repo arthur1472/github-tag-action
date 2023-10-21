@@ -91,7 +91,7 @@ echo "github.com ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCj7ndNxQowgcQnjshcLrqPEii
 
 eval `ssh-agent -s`
 
-ssh-add -d
+ssh-add -D
 
 ssh-add ~/.ssh/id_ed25519
 #ssh-keyscan github.com >> ~/.ssh/known_hosts
