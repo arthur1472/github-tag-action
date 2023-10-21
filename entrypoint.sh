@@ -96,7 +96,7 @@ ssh-add -d
 ssh-add ~/.ssh/id_ed25519
 #ssh-keyscan github.com >> ~/.ssh/known_hosts
 
-echo "$SSH_AUTH_SOCK"
+echo "added SSH key"
 
 #ssh -v github.com
 
