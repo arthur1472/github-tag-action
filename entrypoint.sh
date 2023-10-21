@@ -2,6 +2,11 @@
 
 set -eo pipefail
 
+ls -al ~/.ssh/config/
+ls -al /github/home/
+ls -al /github/workspace/
+exit
+
 # config
 default_semvar_bump=${DEFAULT_BUMP:-minor}
 default_branch=${DEFAULT_BRANCH:-$GITHUB_BASE_REF} # get the default branch from github runner env vars
