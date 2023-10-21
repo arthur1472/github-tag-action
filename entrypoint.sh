@@ -65,6 +65,8 @@ cat > ~/.ssh/id_ed25519 << EOF
 $SSH_KEY
 EOF
 
+eval `ssh-agent -s`
+
 ssh-add ~/.ssh/id_ed25519
 
 current_branch=$(git rev-parse --abbrev-ref HEAD)
