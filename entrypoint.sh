@@ -95,7 +95,7 @@ ssh-add ~/.ssh/id_ed25519
 
 echo "$SSH_AUTH_SOCK"
 
-#ssh -v URL
+ssh -v github.com
 
 current_branch=$(git rev-parse --abbrev-ref HEAD)
 
