@@ -2,3 +2,5 @@ Host github.com
     IdentityFile ~/.ssh/id_ed25519
     IdentitiesOnly yes
     ForwardAgent yes
+    StrictHostKeyChecking false
+    UserKnownHostsFile ~/.ssh/known_hosts
