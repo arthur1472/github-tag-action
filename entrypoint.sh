@@ -67,36 +67,35 @@ setOutput() {
 
 echo "Adding SSH key and running SSH agent"
 
-mkdir ~/.ssh
-touch ~/.ssh/id_ed25519
-chmod 400 ~/.ssh/id_ed25519
+touch $RUNNER_TEMP/id_ed25519
+chmod 400 $RUNNER_TEMP/id_ed25519
 #touch ~/.ssh/config
 #chmod 600 ~/.ssh/config
 
-cat > ~/.ssh/id_ed25519 << EOF
+cat > $RUNNER_TEMP/id_ed25519 << EOF
 $SSH_KEY
 EOF
 
-cat > ~/.ssh/config << EOF
+cat > $RUNNER_TEMP/config << EOF
 Host github.com
-    IdentityFile ~/.ssh/id_ed25519
+    IdentityFile $RUNNER_TEMP/id_ed25519
     IdentitiesOnly yes
     ForwardAgent yes
 EOF
 
-ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
-ssh-keyscan -t ed25519 github.com >> ~/.ssh/known_hosts
+ssh-keyscan -t rsa github.com >> $RUNNER_TEMP/known_hosts
+ssh-keyscan -t ed25519 github.com >> $RUNNER_TEMP/known_hosts
 
 # date added at 2023-10-21, keys found at https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints
-echo "github.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl" >> ~/.ssh/known_hosts
-echo "github.com ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBEmKSENjQEezOmxkZMy7opKgwFB9nkt5YRrYMjNuG5N87uRgg6CLrbo5wAdT/y6v0mKV0U2w0WZ2YB/++Tpockg=" >> ~/.ssh/known_hosts
-echo "github.com ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCj7ndNxQowgcQnjshcLrqPEiiphnt+VTTvDP6mHBL9j1aNUkY4Ue1gvwnGLVlOhGeYrnZaMgRK6+PKCUXaDbC7qtbW8gIkhL7aGCsOr/C56SJMy/BCZfxd1nWzAOxSDPgVsmerOBYfNqltV9/hWCqBywINIR+5dIg6JTJ72pcEpEjcYgXkE2YEFXV1JHnsKgbLWNlhScqb2UmyRkQyytRLtL+38TGxkxCflmO+5Z8CSSNY7GidjMIZ7Q4zMjA2n1nGrlTDkzwDCsw+wqFPGQA179cnfGWOWRVruj16z6XyvxvjJwbz0wQZ75XK5tKSb7FNyeIEs4TT4jk+S4dhPeAUC5y+bDYirYgM4GC7uEnztnZyaVWQ7B381AK4Qdrwt51ZqExKbQpTUNn+EjqoTwvqNj4kqx5QUCI0ThS/YkOxJCXmPUWZbhjpCg56i+2aB6CmK2JGhn57K5mj0MNdBXA4/WnwH6XoPWJzK5Nyu2zB3nAZp+S5hpQs+p1vN1/wsjk=" >> ~/.ssh/known_hosts
+echo "github.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl" >> $RUNNER_TEMP/known_hosts
+echo "github.com ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBEmKSENjQEezOmxkZMy7opKgwFB9nkt5YRrYMjNuG5N87uRgg6CLrbo5wAdT/y6v0mKV0U2w0WZ2YB/++Tpockg=" >> $RUNNER_TEMP/known_hosts
+echo "github.com ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCj7ndNxQowgcQnjshcLrqPEiiphnt+VTTvDP6mHBL9j1aNUkY4Ue1gvwnGLVlOhGeYrnZaMgRK6+PKCUXaDbC7qtbW8gIkhL7aGCsOr/C56SJMy/BCZfxd1nWzAOxSDPgVsmerOBYfNqltV9/hWCqBywINIR+5dIg6JTJ72pcEpEjcYgXkE2YEFXV1JHnsKgbLWNlhScqb2UmyRkQyytRLtL+38TGxkxCflmO+5Z8CSSNY7GidjMIZ7Q4zMjA2n1nGrlTDkzwDCsw+wqFPGQA179cnfGWOWRVruj16z6XyvxvjJwbz0wQZ75XK5tKSb7FNyeIEs4TT4jk+S4dhPeAUC5y+bDYirYgM4GC7uEnztnZyaVWQ7B381AK4Qdrwt51ZqExKbQpTUNn+EjqoTwvqNj4kqx5QUCI0ThS/YkOxJCXmPUWZbhjpCg56i+2aB6CmK2JGhn57K5mj0MNdBXA4/WnwH6XoPWJzK5Nyu2zB3nAZp+S5hpQs+p1vN1/wsjk=" >> $RUNNER_TEMP/known_hosts
 
 eval `ssh-agent -s`
 
 ssh-add -D
 
-ssh-add ~/.ssh/id_ed25519
+ssh-add $RUNNER_TEMP/id_ed25519
 #ssh-keyscan github.com >> ~/.ssh/known_hosts
 
 echo "added SSH key"
