@@ -4,12 +4,12 @@ set -eo pipefail
 
 #cat /etc/ssh/ssh_config
 #cat ~/.ssh/config
-ls -al /github/workspace/
-ls -al /github/workspace/.git/
-cat /github/workspace/.git/config
+#ls -al /github/workspace/
+#ls -al /github/workspace/.git/
+#cat /github/workspace/.git/config
 #echo "$HOME"
 #echo "$GIT_SSH_COMMAND"
-exit
+#exit
 
 # config
 default_semvar_bump=${DEFAULT_BUMP:-minor}
