@@ -77,12 +77,12 @@ cat > ~/.ssh/id_ed25519 << EOF
 $SSH_KEY
 EOF
 
-#cat > ~/.ssh/config << EOF
-#Host github.com
-#    IdentityFile ~/.ssh/id_ed25519
-#    IdentitiesOnly yes
-#    ForwardAgent yes
-#EOF
+cat > ~/.ssh/config << EOF
+Host github.com
+    IdentityFile ~/.ssh/id_ed25519
+    IdentitiesOnly yes
+    ForwardAgent yes
+EOF
 
 ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
 ssh-keyscan -t ed25519 github.com >> ~/.ssh/known_hosts
