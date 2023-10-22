@@ -103,7 +103,7 @@ echo "added SSH key"
 
 #ssh -v github.com
 
-ssh -T git@github.com
+#ssh -T git@github.com
 
 current_branch=$(git rev-parse --abbrev-ref HEAD)
 
@@ -122,6 +122,8 @@ for b in "${branch[@]}"; do
     fi
 done
 echo "pre_release = $pre_release"
+
+echo "fetching tags"
 
 # fetch tags
 git fetch --tags
